@@ -5,7 +5,7 @@ In this project we learnt the various features of ES6 javascript.
 
 <center><h2>Concepts</h2></center>
 
-- [Modern Javascript](Modern Javascript)
+- [Modern Javascript](https://intranet.alxswe.com/concepts/541)
 - [Software Linter](https://intranet.alxswe.com/concepts/542)
 
 <center><h2>Resources</h2></center>
