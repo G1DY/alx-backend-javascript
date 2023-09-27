@@ -1,5 +1,5 @@
 <center><h1>0x00. ES6 Basics</h1></center>
-In this project we learnt the various features of ES6 javascript and did tasks on them to test understanding
+In this project we learnt the various features of ES6 javascript.
 
 ---
 
