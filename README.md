@@ -1,5 +1,5 @@
 <center><h1>Alx-BackEnd Engineering</h1></center>
-In Javascript backend engineering we are expected to learn a range of skills and concepts to build server-side applications and services.Some of the key topics we are focucing on are:
+In Javascript backend engineering we are expected to learn a range of skills and concepts to build server-side applications and services.Some of the key topics to focus are but not limited to:
 
 ---
 
