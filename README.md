@@ -62,3 +62,6 @@ Learn about real-time communication by implementing WebSockets to enable feature
 
 ### DevOps Skills
 Familiarize yourself with DevOps practices, including infrastructure as code (IaC), configuration management, and automation tools like Ansible or Terraform.
+
+# Python Variable Anotations
+Provides type hints used to improve code readability and help catch-type related errors during development
