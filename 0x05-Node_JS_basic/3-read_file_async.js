@@ -16,14 +16,12 @@
  * and they are not a valid student!
  */
 
-const fs = require('fs');
+const fs = require('fs').promises;
 
 const countStudents = async (dataPath) => {
   try {
-    // Attempt to read the database file synchronously
+    // Attempt to read the database file asynchronously
     const fileContent = await fs.readFile(dataPath, 'utf-8');
-
-    // Split the file content into lines
     const fileLines = fileContent.trim().split('\n');
 
     // Check if the file is empty (no students)
