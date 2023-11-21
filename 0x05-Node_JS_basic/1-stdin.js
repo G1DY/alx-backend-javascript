@@ -10,7 +10,7 @@
 process.stdout._write('Welcome to Holberton School, what is your name?\n');
 
 process.stdin.on('data', (data) => {
-  process.stdout._write('Your name is: &{data}');
+  process.stdout._write(`Your name is: ${data}`);
 });
 
 process.stdin.on('end', () => {
