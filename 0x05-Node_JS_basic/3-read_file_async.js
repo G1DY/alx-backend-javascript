@@ -21,7 +21,7 @@ const fs = require('fs');
 const countStudents = async (dataPath) => {
   try {
     // Attempt to read the database file synchronously
-    const fileContent = await fs.readFile(dataPath, 'utf-8').trim();
+    const fileContent = await fs.readFile(dataPath, 'utf-8');
 
     // Split the file content into lines
     const fileLines = fileContent.trim().split('\n');
