@@ -53,3 +53,5 @@ const countStudents = (dataPath) => {
     console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
   }
 };
+
+module.exports = countStudents;
