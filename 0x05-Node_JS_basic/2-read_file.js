@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /**
@@ -14,7 +15,7 @@
  * and they are not a valid student!
  */
 
-import { existsSync, statSync, readFileSync } from 'fs';
+const fs = require('fs');
 
 const countStudents = (dataPath) => {
   if (!existsSync(dataPath)) {
