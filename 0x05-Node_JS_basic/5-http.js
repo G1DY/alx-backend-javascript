@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable max-len */
 const http = require('http');
 const fs = require('fs').promises;
