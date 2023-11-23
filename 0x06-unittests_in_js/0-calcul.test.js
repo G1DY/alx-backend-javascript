@@ -5,6 +5,8 @@ describe('calculateNumber', () => {
   it('should round a and b and return their sum', () => {
     assert.strictEqual(calculateNumber(0.5, 2.5), 4);
     assert.strictEqual(calculateNumber(1.4, 2.7), 4);
+    assert.strictEqual(calculateNumber(1, 3), 4);
+    assert.strictEqual(calculateNumber(1, 2.7), 4);
   });
   it('should fail if a or b is not a number', () => {
     try {
