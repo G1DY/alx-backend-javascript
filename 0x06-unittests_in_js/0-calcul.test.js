@@ -6,4 +6,9 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber(0.5, 2.5), 4);
     assert.strictEqual(calculateNumber(1.4, 2.7), 4);
   });
+  it('should fail if a or b is not a number', () => {
+    assert.throws(() => calculateNumber('not a number', 2.5), TypeError);
+    assert.throws(() => calculateNumber(2.5, 'not a number'), TypeError);
+    assert.throws(() => calculateNumber('not a number', 'not number'), TypeError);
+  })
 });
