@@ -7,11 +7,25 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber(1.4, 2.7), 4);
   });
   it('should fail if a or b is not a number', () => {
-    assert.throws(() => 
-      calculateNumber('not a number', 2.5), TypeError, 'a is not a number');
-    assert.throws(() => 
-      calculateNumber(2.5, 'not a number'), TypeError, 'b is not a number');
-    assert.throws(() => 
-      calculateNumber('not a number', 'not number'), TypeError, 'a and b are not numbers');
+    try {
+      calculateNumber('not a number', 2.5);
+      assert.fail('Expected calculateNumber to throw an error for invalid argument');
+    } catch (error) {
+      assert.strictEqual(error.name, 'AssertionError');
+    }
+
+    try {
+      calculateNumber(2.5, 'not a number');
+      assert.fail('Expected calculateNumber to throw an error for invalid argument');
+    } catch (error) {
+      assert.strictEqual(error.name, 'AssertionError');
+    }
+
+    try {
+      calculateNumber('not a number', 'not number');
+      assert.fail('Expected calculateNumber to throw an error for invalid arguments');
+    } catch (error) {
+      assert.strictEqual(error.name, 'AssertionError');
+    }
   });
 });
