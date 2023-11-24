@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, HOST, () => {
-  console.log(`API available on ${localhost} port ${PORT}`);
+  console.log(`API available on ${HOST} port ${PORT}`);
 });
 
 module.exports = app;
