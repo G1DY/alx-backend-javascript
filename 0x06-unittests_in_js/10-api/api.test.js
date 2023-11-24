@@ -1,65 +1,55 @@
-const { expect } = require('chai');
-const request = require('request');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const app = require('./api'); // Update the path accordingly
 
-const HOST = 'localhost';
-const PORT = 7865;
+const { expect } = chai;
 
-describe('Express app test suite', function() {
-  describe('/', function() {
-    it('should return home page', function(done) {
-      request.get(`http://${HOST}:${PORT}/`, (error, res, body) => {
-        if (error) expect(res.statusCode).to.not.equal(200);
-        expect(res.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome to the payment system');
-        done();
-      });
+chai.use(chaiHttp);
+
+const HOST = 'http://localhost:7865';
+
+describe('Express app test suite', function () {
+  describe('/', function () {
+    it('should return home page', async function () {
+      const response = await chai.request(HOST).get('/');
+      expect(response).to.have.status(200);
+      expect(response.text).to.equal('Welcome to the payment system');
     });
   });
 
-  describe('/cart:id', function() {
-    it('should return cart page with cart id', function(done) {
-      request.get(`http://${HOST}:${PORT}/cart/12`, (error, res, body) => {
-        if (error) expect(res.statusCode).to.not.equal(200);
-        expect(res.statusCode).to.equal(200);
-        expect(body).to.equal('Payment methods for cart 12');
-        done();
-      });
+  describe('/cart:id', function () {
+    it('should return cart page with cart id', async function () {
+      const response = await chai.request(HOST).get('/cart/12');
+      expect(response).to.have.status(200);
+      expect(response.text).to.equal('Payment methods for cart 12');
     });
-    it('should return an error if :id parameter is not a number', function(done) {
-      request.get(`http://${HOST}:${PORT}/cart/gi`, (error, res, body) => {
-        if (error) expect(res.statusCode).to.not.equal(200);
-        expect(res.statusCode).to.equal(404);
-        done();
-      });
+
+    it('should return an error if :id parameter is not a number', async function () {
+      const response = await chai.request(HOST).get('/cart/gi');
+      expect(response).to.have.status(404);
     });
   });
 
-  describe('/available_payment', function() {
-    it('should get the available payment method', function(done) {
+  describe('/available_payment', function () {
+    it('should get the available payment method', async function () {
+      const response = await chai.request(HOST).get('/available_payments');
       const expectedResponse = {
         payment_methods: {
           credit_cards: true,
-          paypal: false
+          paypal: false,
         },
       };
-      request.get(`http://${HOST}:${PORT}/available_payments`, (error, res, body) => {
-        if (error) expect(res.statusCode).to.equal(200);
-        expect(res.statusCode).to.equal(200);
-        expect(body).to.equal(JSON.stringify(expectedResponse));
-        done();
-      });
+      expect(response).to.have.status(200);
+      expect(response.body).to.deep.equal(expectedResponse);
     });
   });
-  describe('/login', function() {
-    it('should get the available payment method', function(done) {
+
+  describe('/login', function () {
+    it('should get the available payment method', async function () {
       const userName = 'Tester';
-      request.post({ url: `http://${HOST}:${PORT}/login`, form: { userName } },
-      (error, res, body) => {
-        if (error) expect(res.statusCode).to.not.equal(200);
-        expect(res.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome Tester');
-        done();
-      });
+      const response = await chai.request(HOST).post('/login').send({ userName });
+      expect(response).to.have.status(200);
+      expect(response.text).to.equal(`Welcome ${userName}`);
     });
   });
 });
