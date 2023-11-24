@@ -9,12 +9,16 @@ app.get('/', (req, res) => {
   res.send('Welcome to the payment system',);
 });
 
-app.get('/cart/:id(\\d+)', (res, req) => {
-  const id = req.params.id;
+app.get('/cart/:id(\\d+)', (req, res) => {
+  const cartId = req.params.id;
 
-  res.send(`Payment methods for cart ${id}`);
-});
-
+  if (/^\d+$/.test(cartId)) {
+    res.send(`Payment methods for cart ${cartId}`);
+  }
+  else {
+    res.status(404).send('Invalid cart ID');
+  }
+}); 
 app.listen(PORT, HOST, () => {
   console.log(`API available on ${HOST} port ${PORT}`);
 });
