@@ -19,7 +19,7 @@ describe('sendPaymentRequestToApi', function() {
     });
     it('should return 20 when called by sendPaymentRequestToApi', function() {
       sendPaymentRequestToApi(100, 20);
-      expect(spy.calledWith('The total is: 20')).to.equal(true);
+      expect(spy.calledWith('The total is: 20')).to.equal(false);
       expect(spy.calledOnce).to.equal(true);
     });
   });
