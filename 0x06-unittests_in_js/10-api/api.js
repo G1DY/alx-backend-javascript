@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the payment system',);
+  res.send('Welcome to the payment system');
 });
 
 app.get('/cart/:id(\\d+)', (req, res) => {
@@ -15,10 +15,18 @@ app.get('/cart/:id(\\d+)', (req, res) => {
 
   if (/^\d+$/.test(cartId)) {
     res.send(`Payment methods for cart ${cartId}`);
-  }
-  else {
+  } else {
     res.status(404).send('Invalid cart ID');
   }
+});
+
+app.get('/available_payments', (req, res) => {
+  res.json({
+    payment_methods: {
+      credit_cards: true,
+      paypal: false
+    }
+  });
 });
 
 app.post('/login', (req, res) => {
