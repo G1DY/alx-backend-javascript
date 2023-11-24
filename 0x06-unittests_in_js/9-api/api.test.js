@@ -7,18 +7,18 @@ const PORT = 7865;
 describe('API Integration', () => {
   const API_URL = 'http://localhost:7865';
 
-  it('should return home page', function(done) {
-    request.get(`http://${HOST}:${PORT}/`, (error, res, body) => {
-      if (error) expect(res.statusCode).to.not.equal(200);
-      expect(res.statusCode).to.equal(200);
-      expect(body).to.equal('Welcome to the payment system');
+  it ('GET / returns correct response', (done) => {
+    request.get(`${API_URL}/`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
       done();
     });
   });
 
   it ('GET /cart/:id returns correct response for valid :id', (done) => {
-    request.get(`${API_URL}/cart/12`, (_err, res, _body) => {
+    request.get(`${API_URL}/cart/12`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(404);
+      expect(body).to.be.equal('Payment methods for cart at 12');
       done();
     });
   });
